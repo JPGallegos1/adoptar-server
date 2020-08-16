@@ -25,9 +25,9 @@ services:
     networks:
       - webnet
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_DB: ${DB_DATABASE_NAME}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_DB: ${DATABASE}
       PG_DATA: /var/lib/postgresql/data
     ports:
       - 5432:5432
