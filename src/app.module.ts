@@ -6,6 +6,7 @@ import { ConfigService } from './config/config.service';
 import { Configuration } from './config/config.keys';
 import * as ormconfig from '../ormconfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       keepConnectionAlive: true,
       autoLoadEntities: true,
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
