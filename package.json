@@ -1,7 +1,7 @@
 {
   "name": "adoptar-server",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "description": "Server with Nest, Postgres, Docker and TypeORM for https://adoptar.app",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
