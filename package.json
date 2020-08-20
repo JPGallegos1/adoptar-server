@@ -1,6 +1,6 @@
 {
   "name": "adoptar-server",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Server with Nest, Postgres, Docker and TypeORM for https://adoptar.app",
   "author": "",
   "private": true,
@@ -18,7 +18,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migration:generate": "ts-node node_modules/typeorm/cli.js migration:generate --config ./orm.config.json --name",
+    "migration:run": "ts-node node_modules/typeorm/cli.js migration:run --config ./orm.config.json"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
