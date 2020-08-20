@@ -4,20 +4,11 @@ import { AppService } from './app.service';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { Configuration } from './config/config.keys';
-import * as ormconfig from '../ormconfig';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [
-    ConfigModule,
-    TypeOrmModule.forRoot({
-      ...ormconfig,
-      keepConnectionAlive: true,
-      autoLoadEntities: true,
-    }),
-    UserModule,
-  ],
+  imports: [ConfigModule, UserModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
