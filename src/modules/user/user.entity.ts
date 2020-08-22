@@ -7,6 +7,8 @@ import {
   JoinColumn,
   ManyToMany,
   JoinTable,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { UserDetails } from './user.details.entity';
 import { Role } from '../role/role.entity';
@@ -37,6 +39,7 @@ export class User extends BaseEntity {
   @ManyToMany(
     type => Role,
     role => role.users,
+    { eager: true },
   )
   @JoinTable({ name: 'user_roles' })
   roles: Role[];
@@ -44,9 +47,9 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', default: 'ACTIVE', length: 8 })
   status: string;
 
-  @Column({ type: 'timestamp', name: 'create_at' })
+  @CreateDateColumn({ type: 'timestamp', name: 'create_at' })
   createAt: Date;
 
-  @Column({ type: 'timestamp', name: 'update_at' })
+  @UpdateDateColumn({ type: 'timestamp', name: 'update_at' })
   updateAt: Date;
 }

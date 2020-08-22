@@ -1,14 +1,20 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  BaseEntity,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+} from 'typeorm';
 
 @Entity('users_details')
 export class UserDetails extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ type: 'varchar', length: 25, nullable: false })
+  @Column({ type: 'varchar', length: 25, nullable: true })
   name: string;
 
-  @Column({ type: 'varchar', length: 25, nullable: false, name: 'last_name' })
+  @Column({ type: 'varchar', length: 25, nullable: true, name: 'last_name' })
   lastName: string;
 
   @Column({ type: 'varchar', length: 20, nullable: true })
@@ -17,9 +23,9 @@ export class UserDetails extends BaseEntity {
   @Column({ type: 'varchar', default: 'ACTIVE', length: 8 })
   status: string;
 
-  @Column({ type: 'timestamp', name: 'created_at' })
-  createdAt: Date;
+  @CreateDateColumn({ type: 'timestamp', name: 'create_at', nullable: true })
+  createAt: Date;
 
-  @Column({ type: 'timestamp', name: 'update_at' })
+  @CreateDateColumn({ type: 'timestamp', name: 'update_at', nullable: true })
   updateAt: Date;
 }

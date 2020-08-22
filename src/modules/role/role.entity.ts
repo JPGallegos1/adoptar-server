@@ -5,6 +5,7 @@ import {
   Column,
   ManyToMany,
   JoinColumn,
+  CreateDateColumn,
 } from 'typeorm';
 import { User } from '../user/user.entity';
 
@@ -26,9 +27,9 @@ export class Role extends BaseEntity {
   @Column({ type: 'varchar', default: 'ACTIVE', length: 8 })
   status: string;
 
-  @Column({ type: 'timestamp', name: 'created_at' })
-  createdAt: Date;
+  @CreateDateColumn({ type: 'timestamp', name: 'create_at' })
+  createAt: Date;
 
-  @Column({ type: 'timestamp', name: 'update_at' })
+  @CreateDateColumn({ type: 'timestamp', name: 'update_at' })
   updateAt: Date;
 }
