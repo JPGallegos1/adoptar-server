@@ -6,6 +6,7 @@ import {
   Body,
   Patch,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
@@ -16,7 +17,7 @@ export class UserController {
   constructor(private readonly _userService: UserService) {}
 
   @Get(':id')
-  async getUserById(@Param() id: number): Promise<UserDto> {
+  async getUserById(@Param('id', ParseIntPipe) id: number): Promise<UserDto> {
     const user = await this._userService.getUser(id);
     return user;
   }
@@ -34,13 +35,13 @@ export class UserController {
   }
 
   @Patch(':id')
-  async updateUser(@Param() id: number, @Body() user: User) {
+  async updateUser(@Param('id', ParseIntPipe) id: number, @Body() user: User) {
     const userUpdated = await this._userService.updateUser(id, user);
     return true;
   }
 
   @Delete(':id')
-  async deleteUser(@Param() id: number) {
+  async deleteUser(@Param('id', ParseIntPipe) id: number) {
     await this._userService.deleteUser(id);
     return true;
   }
