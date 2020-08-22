@@ -4,8 +4,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToOne,
+  JoinColumn,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { UserDetails } from './user.details.entity';
+import { Role } from '../role/role.entity';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -27,7 +31,15 @@ export class User extends BaseEntity {
     nullable: false,
     eager: true,
   })
+  @JoinColumn({ name: 'detail_id' })
   details: UserDetails;
+
+  @ManyToMany(
+    type => Role,
+    role => role.users,
+  )
+  @JoinTable({ name: 'user_roles' })
+  roles: Role[];
 
   @Column({ type: 'varchar', default: 'ACTIVE', length: 8 })
   status: string;
