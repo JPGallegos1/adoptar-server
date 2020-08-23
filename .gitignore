@@ -33,12 +33,12 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# DATABASE CONFIG
+orm.config.json
+
 # ENVS
 .env.*
 .env
-
-# DATABASE CONFIG
-orm.config.json
 
 # PERSONAL
 articles.txt
